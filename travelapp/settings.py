@@ -16,6 +16,10 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 
+CELERY_BROKER_URL = 'amqp://localhost'  # RabbitMQ URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
 env = environ.Env()
 environ.Env.read_env(os.path.join('.env'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,6 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
+CHAPA_SECRET_KEY = env('CHAPA_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
