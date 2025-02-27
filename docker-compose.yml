@@ -1,7 +1,8 @@
 version: '3.8'
 
 services:
-  web2:
+  web:
+    image: travel-app
     build:
       context: .
     ports:
